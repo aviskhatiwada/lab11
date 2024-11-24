@@ -42,15 +42,21 @@ def main():
 
 	if opt==2:
 		an=input("What is the assignment name: ")
-		aid_=[id_ for (n,id_,_) in a_id_pt if an==n][0]
+		try:
+			aid_=[id_ for (n,id_,_) in a_id_pt if an==n][0]
+			pers=[]
+			for (s,aid,per) in sid_aid_per:
+				if aid==aid_:
+					pers.append(int(per))
+			print(f'Min: {min(pers)}%')
+			print(f'Avg: {sum(pers)/len(pers):.0f}%')
+			print(f'Max: {max(pers)}%')
+		except:
+			print("Assignment not found")
+		return
+			
 
-		pers=[]
-		for (s,aid,per) in sid_aid_per:
-			if aid==aid_:
-				pers.append(int(per))
-		print(f'Min: {min(pers)}%')
-		print(f'Avg: {:.2f}%'.format(sum(pers)/len(pers)))
-		print(f'Max: {max(pers)}%')
+
 
 
 
