@@ -1,10 +1,11 @@
 #!/venv/bin/python3
 
 import glob
+import matplotlib.pyplot as plt
 menu='''
 1. Student grade
 2. Assignment statistics
-3. Assignment graph 
+3. Assignment graph
 '''
 
 with open('./data/students.txt') as s: 
@@ -54,12 +55,18 @@ def main():
 		except:
 			print("Assignment not found")
 		return
-			
 
+	if opt==3:
+		an=input("What is the assignment name: ")
+		aid_=[id_ for (n,id_,_) in a_id_pt if an==n][0]
+		pers=[]
+		for (s,aid,per) in sid_aid_per:
+			if aid==aid_:
+				pers.append(int(per))
+		plt.hist(pers, bins=[0,25,50,75,100])	
+		plt.show()
 
-
-
-
+		return
 
 if __name__=="__main__":
 	main()
