@@ -22,6 +22,7 @@ for f in glob.glob('./data/submissions/*'):
 def main():
 	#id_n, a_id_pt, sid_aid_per
 	#print(id_n)
+	print(menu)
 	opt=int(input('Enter your selection: '))
 	if opt==1:
 		sn=input("What is the student's name: ")
@@ -39,9 +40,19 @@ def main():
 
 			print(str(round(P))+'%')
 
+	if opt==2:
+		an=input("What is the assignment name: ")
+		aid_=[id_ for (n,id_,_) in a_id_pt if an==n][0]
+
+		pers=[]
+		for (s,aid,per) in sid_aid_per:
+			if aid==aid_:
+				pers.append(int(per))
+		print(f'Min: {min(pers)}%')
+		print(f'Avg: {round(sum(pers)/len(pers))}%')
+		print(f'Max: {max(pers)}%')
 
 
-			#for _ in [per*int(([pt for (_,aid,pt) in a_id_pt if aid==aid_][0])) for k(sid,aid_,per) in sid_aid_per if sid==id_]:
 
 
 if __name__=="__main__":
