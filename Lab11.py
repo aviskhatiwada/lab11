@@ -49,7 +49,7 @@ def main():
 			if aid==aid_:
 				pers.append(int(per))
 		print(f'Min: {min(pers)}%')
-		print(f'Avg: {round(sum(pers)/len(pers))}%')
+		print(f'Avg: {:.2f}%'.format(sum(pers)/len(pers)))
 		print(f'Max: {max(pers)}%')
 
 
